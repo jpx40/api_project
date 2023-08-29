@@ -1,46 +1,68 @@
-from sqlalchemy import MetaData
+import sqlite3
+from sqlite3 import Error
 
-metadata_obj = MetaData()
 
-from sqlalchemy import ForeignKey
+def create_connection(path):
+    connection = None
 
-from sqlalchemy import Table, Column, Integer, String
+    try:
 
-user_table = Table(
-    "user",
-    metadata_obj,
-    Column("user_id", Integer, primary_key=True, nullable=False),
-    Column("name", String(30), nullable=False),
-    Column("fullname", String),
-)
+        connection = sqlite3.connect(path)
 
-address_table = Table(
-    "address",
-    metadata_obj,
-    Column("id", Integer, primary_key=True, nullable=False),
-    Column("user_id", ForeignKey("user.id"), nullable=False),
-    Column("email_address", String, nullable=False),
-)
+        print("Connection to SQLite DB successful")
 
-parkplatz_table = Table(
-    "parkplatz",
-    metadata_obj,
-    Column("parkplatz_id", Integer, primary_key=True, nullable=False),
-    Column("besetzt", String(30), nullable=False),
-)
+    except  Error as e:
 
-arbeitzplatz_table = Table(
-    "arbeitzplatz",
-    metadata_obj,
-    Column("arbeitzplatz_id", Integer, primary_key=True),
-    Column("besetzt", String(30), nullable=False),
-    Column("user_id", ForeignKey("user_.id"), nullable=False),
-)
+        print(f"The error '{e}' occurred")
 
-arbeitzplatz_table = Table(
-    "arbeitzplatz",
-    metadata_obj,
-    Column("game_id", Integer, primary_key=True),
-    Column("score", Integer),
-    Column("user_id", ForeignKey("user_.id"), nullable=False),
-)
+    return connection
+
+
+connection = create_connection("./test.db")
+connection.row_factory = sqlite3.Row
+
+
+def dict_factory(cursor, row):
+    fields = [column[0] for column in cursor.description]
+    return {key: value for key, value in zip(fields, row)}
+
+
+def get_user(conn):
+    result = []
+    conn.row_factory = dict_factory
+    for row in conn.execute("SELECT  * from 'user'"):
+        result.append(row)
+
+    return result
+
+
+def get_game(conn):
+    result = []
+    conn.row_factory = dict_factory
+    for row in conn.execute("SELECT  * from 'game'"):
+        result.append(row)
+
+    return result
+
+
+def db_close(conn):
+    result = []
+    conn.row_factory = dict_factory
+    for row in conn.execute("SELECT  * from 'user'"):
+        result.append(row)
+
+
+def get_arbeitzplatz(conn):
+    result = []
+    conn.row_factory = dict_factory
+    for row in conn.execute("SELECT  * from 'arbeitzplatz'"):
+        result.append(row)
+    return result
+
+
+def get_parkplatz(conn):
+    result = []
+    conn.row_factory = dict_factory
+    for row in conn.execute("SELECT  * from 'parkplatz'"):
+        result.append(row)
+    return result

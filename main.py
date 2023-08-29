@@ -1,51 +1,54 @@
 import os
-import pathlib
-from pathlib import Path
 
-from fastapi import FastAPI, BackgroundTasks
+from fastapi import BackgroundTasks
 from fastapi.responses import FileResponse
 import fnmatch
 from fastapi import Depends, FastAPI, HTTPException
-from sqlalchemy.orm import Session
 
-import crud
-import models
-import schemas
-from database import SessionLocal, engine
-
-models.Base.metadata.create_all(bind=engine)
+import sql_tool
+from sql_tool import connection
 
 from pydantic import BaseModel
 
 import yt
 
 app = FastAPI()
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
-
-@app.get("/users/", response_model=list[schemas.User])
-def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    users = crud.get_users(db, skip=skip, limit=limit)
-    return users
 
 class Item(BaseModel):
     name: str
 
-"""
-def is_file_their():
-    filename =  pathlib.Path('./video/*')
-    if filename.is_file():
-        return True
-        """
+
+@app.get("/api/users/")
+async def read_users():
+    user = sql_tool.get_user(connection)
+    # sql_tool.db_close(connection)
+    return {"user": user}
+
+
+@app.get("/api/arbeitzplatz")
+async def read_arbeitzplatz():
+    arbeitzplatz = sql_tool.get_arbeitzplatz(connection)
+    return arbeitzplatz
+
+
+@app.get("/api/parkplatz/")
+async def read_parkplatz():
+    parkplatz = sql_tool.get_parkplatz(connection)
+    return parkplatz
+
+
+@app.get("/api/game/")
+async def read_game_scores():
+    game = sql_tool.get_game(connection)
+    return game
+
+
 def match_mp4():
     for filename in os.listdir('./video'):
-        fnmatch.fnmatch("./video/" + filename , "*.mp4")
-        return  "./video/" + filename
+        fnmatch.fnmatch("./video/" + filename, "*.mp4")
+        return "./video/" + filename
+
 
 """
 @app.get("/video-is-their/")
@@ -57,11 +60,11 @@ async def get_info(background_tasks: BackgroundTasks):
 """
 
 
-
 @app.post("/items/")
 async def create_item(item: Item, background_tasks: BackgroundTasks):
     background_tasks.add_task(yt.down(item.name))
     return {"message": "video gedownloaded"}
+
 
 @app.get("/video/", response_class=FileResponse)
 async def get_vd():
