@@ -1,0 +1,190 @@
+
+    #container {
+        display: grid;
+        grid: repeat(3, 100px) / auto-flow 80px;
+        justify-content: center;
+    }
+
+    #container > .parkplatz_frei {
+        width: 50px;
+        height: 70px;
+        border: 1px solid;
+        max-width: 20em;
+
+
+    }
+
+    #container > .parkplatz_besetzt {
+        width: 50px;
+        height: 70px;
+        border: 1px solid;
+        max-width: 20em;
+
+
+    }
+
+    .parkplatz_frei {
+        display: flex;
+        background-color: green;
+        align-items: center;
+        margin-inside: auto;
+
+
+    }
+
+    .parkplatz_besetzt {
+
+        display: flex;
+        background-color: red;
+        align-items: center;
+        margin-inside: auto;
+
+
+    }
+
+    .inbox {
+        display: flow;
+        margin-right: auto;
+        margin-left: auto;
+
+
+    }
+    .head {
+        margin-bottom: 100px;
+
+    }
+
+    footer {
+        justify-content: center;
+        padding: 5px;
+        background-color: #A8DADC;
+        color: black;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .footer-section {
+        display:grid;
+
+width: 100%;
+  bottom: 0;
+        color: black;
+
+              background-color: #A8DADC;
+        justify-content: center;
+        position: fixed
+        ;
+    }
+    div {
+        display: inline-block;
+        margin-right: 40px;
+    }
+
+
+
+
+
+    p {
+        display: inline-block;
+        margin-right: 40px;
+    }
+
+    .menu-footer {
+        list-style-type: none;
+
+    }
+
+
+     .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: red;
+        color: #fff;
+    }
+
+    .nav-links a {
+        color: #fff;
+    }
+
+    /* LOGO */
+    .logo {
+        font-size: 32px;
+    }
+
+    /* NAVBAR MENU */
+    .menu {
+        display: flex;
+        gap: 1em;
+        font-size: 18px;
+    }
+
+    .menu li:hover {
+        background-color: #4c9e9e;
+        border-radius: 5px;
+        transition: 0.3s ease;
+    }
+
+    .menu li {
+        padding: 5px 14px;
+    }
+
+    /* DROPDOWN MENU */
+    .services {
+        position: relative;
+    }
+
+
+
+
+    .section_nav {
+        box-sizing: border-box;
+        background-color: #457B9D;
+
+    }
+
+    nav {
+
+
+        display: flex;
+
+        border-bottom: 1px solid black;
+    }
+
+
+    ol {
+        margin-top: 8px;
+        margin-bottom: 3px;
+
+    }
+
+    .menu ol {
+        list-style-type: none;
+        padding-left: 0;
+
+    }
+
+    .menu {
+        display: inline-block;
+        color: white;
+        margin-left: 20px;
+
+
+
+
+    }
+
+    a {
+        color: black;
+        text-decoration: #676778;
+
+    }
+
+    .menu a::after {
+
+        display: inline-block;
+        font-size: 80%;
+        font-weight: bold;
+        padding: 0 3px;
+    }

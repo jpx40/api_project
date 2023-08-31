@@ -62,7 +62,50 @@ def get_arbeitzplatz(conn):
 
 def get_parkplatz(conn):
     result = []
+    output = {}
     conn.row_factory = dict_factory
     for row in conn.execute("SELECT  * from 'parkplatz'"):
         result.append(row)
-    return result
+    for row in result:
+        if row["parkplatz_id"] == 1:
+            one = {"one": row}
+            output["one"] = row
+
+        elif row["parkplatz_id"] == 2:
+            two ={"two": row}
+            output["two"] = row
+
+        elif row["parkplatz_id"] == 3:
+            three ={"three": row}
+            output["three"] = row
+
+        elif row["parkplatz_id"] == 4:
+            four ={"four": row}
+            output["four"] = row
+
+
+        elif row.parkplatz_id == 5:
+            five ={"five": row}
+            output["five"] = row
+
+        elif row["parkplatz_id"] == 6:
+            six ={"six": row}
+            output["six"] = row
+
+        elif row["parkplatz_id"] == 7:
+            seven ={"eight": row}
+            output["eight"] = row
+
+        elif row["parkplatz_id"] == 8:
+            eight ={"eight": row}
+            output["eight"] = row
+
+        elif row["parkplatz_id"] == 9:
+            nine ={"nine": row}
+            output["nine"] = row
+
+
+
+
+
+    return output
