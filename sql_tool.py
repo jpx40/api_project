@@ -22,7 +22,6 @@ def create_connection(password: str, user: str, database: str, host: str):
     return connection
 
 
-
 def dict_factory(cursor, row):
     fields = [column[0] for column in cursor.description]
     return {key: value for key, value in zip(fields, row)}
@@ -46,8 +45,6 @@ def get_game(db):
     return result
 
 
-
-
 def get_arbeitzplatz(db):
     with db.cursor(dictionary=True) as c:
         c.execute("SELECT  * FROM wechselarbeitsplaetze")
@@ -62,9 +59,6 @@ def get_parkplatz(db):
         c.execute("SELECT  * FROM parkplatz")
 
         result = c.fetchall()
-
-
-
 
     for row in result:
         if row["parkplatz_id"] == 1:
@@ -105,5 +99,3 @@ def get_parkplatz(db):
             output["nine"] = row
 
     return output
-
-

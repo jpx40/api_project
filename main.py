@@ -1,30 +1,27 @@
-import os
-from fastapi.encoders import jsonable_encoder
-from fastapi.staticfiles import StaticFiles
-from fastapi import BackgroundTasks
-from fastapi.responses import FileResponse
 import fnmatch
-from fastapi import Depends, FastAPI, HTTPException
+import os
+
+from fastapi import BackgroundTasks
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
-import sql_tool
-from sql_tool import create_connection
-
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
+import sql_tool
 import yt
+from sql_tool import create_connection
 
 db = create_connection(user="Jonas_P", password="Password", database="sys", host="10.0.0.200")
 
 
-
 def get_db():
-    db = create_connection(user="Jonas_P",password="Password",database="mysql",host="10.0.0.200")
+    db = create_connection(user="Jonas_P", password="Password", database="mysql", host="10.0.0.200")
     cursor = db.cursor(dictionary=True)
     try:
         yield cursor
     finally:
         cursor.close()
+
 
 app = FastAPI()
 
@@ -52,7 +49,7 @@ class Item(BaseModel):
 async def read_users():
     user = sql_tool.get_user(cursor)
     # sql_tool.db_close(connection)
-    #json_compatible_item_data = jsonable_encoder(user)
+    # json_compatible_item_data = jsonable_encoder(user)
 
     return {"user": user}
 
@@ -118,9 +115,4 @@ subapi = FastAPI()
 def read_sub():
     return "assets/styles/global.css"
 
-
-#app.mount("/subapi", subapi)
-
-
-
-
+# app.mount("/subapi", subapi)
