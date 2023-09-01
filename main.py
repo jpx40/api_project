@@ -8,12 +8,23 @@ from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 import sql_tool
-from sql_tool import connection
+from sql_tool import create_connection
 
 from pydantic import BaseModel
 
 import yt
 
+db = create_connection(user="Jonas_P", password="Password", database="sys", host="10.0.0.200")
+
+
+
+def get_db():
+    db = create_connection(user="Jonas_P",password="Password",database="mysql",host="10.0.0.200")
+    cursor = db.cursor(dictionary=True)
+    try:
+        yield cursor
+    finally:
+        cursor.close()
 
 app = FastAPI()
 
@@ -39,7 +50,7 @@ class Item(BaseModel):
 
 @app.get("/api/users")
 async def read_users():
-    user = sql_tool.get_user(connection)
+    user = sql_tool.get_user(cursor)
     # sql_tool.db_close(connection)
     #json_compatible_item_data = jsonable_encoder(user)
 
@@ -48,19 +59,19 @@ async def read_users():
 
 @app.get("/api/arbeitzplatz")
 async def read_arbeitzplatz():
-    arbeitzplatz = sql_tool.get_arbeitzplatz(connection)
+    arbeitzplatz = sql_tool.get_arbeitzplatz(cursor)
     return arbeitzplatz
 
 
 @app.get("/api/parkplatz/")
 async def read_parkplatz():
-    parkplatz = sql_tool.get_parkplatz(connection)
+    parkplatz = sql_tool.get_parkplatz(cursor)
     return parkplatz
 
 
 @app.get("/api/game/")
 async def read_game_scores():
-    game = sql_tool.get_game(connection)
+    game = sql_tool.get_game(db)
     return {"game": game}
 
 
@@ -106,8 +117,6 @@ subapi = FastAPI()
 @app.get("/sub", response_class=FileResponse)
 def read_sub():
     return "assets/styles/global.css"
-
-
 
 
 #app.mount("/subapi", subapi)
