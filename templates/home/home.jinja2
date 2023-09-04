@@ -1,0 +1,255 @@
+{% extends "layout.html" %}
+{% block main_content %}
+
+
+    <section>
+        <div id="container">
+            <div id="one" class="parkplatz_frei"><p class="inbox">
+                1</p>
+            </div>
+
+            <div id="two" class="parkplatz_frei"><p class="inbox">
+                2</p>
+            </div>
+
+            <div id="three" class="parkplatz_frei"><p class="inbox">
+                3</p>
+            </div>
+
+            <div id="four" class="parkplatz_frei"><p class="inbox">
+                4</p>
+            </div>
+
+            <div id="five" class="parkplatz_frei"><p class="inbox">
+                5</p>
+            </div>
+
+            <div id="six" class="parkplatz_frei"><p class="inbox">
+                6</p>
+            </div>
+
+            <div id="seven" class="parkplatz_frei"><p class="inbox">
+                7</p>
+            </div>
+
+            <div id="eight" class="parkplatz_frei"><p class="inbox">
+                8</p>
+            </div>
+            <div id="nine" class="parkplatz_frei"><p class="inbox">
+                9</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div x-data="{ game: [] }"
+             x-init="game = await (await fetch('http://127.0.0.1:8000/api/game/')).json()">
+
+            <div class="relative overflow-x-auto">
+
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
+
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Game
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Scroe
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[0].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[0].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[1].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[1].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[2].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[2].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[3].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[3].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[4].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[4].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[5].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[5].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[6].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[6].user_name"></td>
+
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section>
+        <div x-data="{ arbeitzplatz: [] }"
+             x-init="arbeitzplatz = await (await fetch('http://127.0.0.1:8000/api/game/')).json()">
+
+            <div class="relative overflow-x-auto">
+
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
+
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Arbeitzplatz
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            User
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Status
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+                            x-text="arbeitzplatz.arbeitzplatz[0].id"></td>
+                        <td class="px-6 py-4"
+                            x-text="arbeitzplatz.arbeitzplatz[0].id"></td>
+                        <td class="px-6 py-4"
+                            x-text="arbeitzplatz.arbeitzplatz[0].id"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[1].id"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[1].user"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[1].status"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[2].id"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[2].user"></td>
+                        <td class="px-6 py-4"
+                            x-text="arbeitzplatz.arbeitzplatz[2].status"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[3].id"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[3].user"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[3].status"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+                            x-text="arbeitzplatz.arbeitzplatz[4].id"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[4].user"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[4].status"></td>
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[5].id"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[5].user"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[5].status"></td>
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[6].id"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[6].user"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="arbeitzplatz.arbeitzplatz[6].status"></td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

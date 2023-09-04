@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href='http://127.0.0.1:8000/static/styles/global.css'>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet"/>
+
+
+</head>
+<body>
+
+
+{% block main_content %}{% endblock %}
+<section class="footer-section">
+    <div>
+        <p>
+            © 2023 Krise GmbH
+        </p>
+
+    </div>
+
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+
+</body>
+<script type="text/hyperscript">
+
+    fetch 127.0.0.1:8000/api/parkplatz put the result into #one
+
+
+</script>
+</html>
