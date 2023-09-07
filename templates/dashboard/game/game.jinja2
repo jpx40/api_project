@@ -1,0 +1,102 @@
+
+    <section>
+
+
+    <section>
+        <div x-data="{ game: [] }"
+             x-init="game = await (await fetch('http://127.0.0.1:8000/api/game/')).json()">
+
+            <div class="relative overflow-x-auto">
+
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
+
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Game
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Scroe
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[0].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[0].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[1].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[1].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[2].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[2].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[3].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[3].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[4].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[4].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[5].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[5].user_name"></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[6].user_name"></td>
+                        <td class="px-6 py-4"
+
+                            x-text="game.game[6].user_name"></td>
+
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+
+z

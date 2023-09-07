@@ -10,6 +10,7 @@
         height: 70px;
         border: 1px solid;
         max-width: 20em;
+        background-color: green;
 
 
     }
@@ -19,13 +20,14 @@
         height: 70px;
         border: 1px solid;
         max-width: 20em;
+        background-color: red;
+
 
 
     }
 
     .parkplatz_frei {
         display: flex;
-        background-color: green;
         align-items: center;
         margin-inside: auto;
 
@@ -35,7 +37,6 @@
     .parkplatz_besetzt {
 
         display: flex;
-        background-color: red;
         align-items: center;
         margin-inside: auto;
 

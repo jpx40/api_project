@@ -1,14 +1,21 @@
 {% extends "layout.html" %}
 {% block main_content %}
-
-
-    <section>
-        <div id="container">
-            <div id="one" class="parkplatz_frei"><p class="inbox">
+<div>{{ foo.foo }}</div>
+    <section >
+        <div id="container" x-data="two_value = false"  >
+            <div  id="one" class="parkplatz_frei"><p class="inbox">
                 1</p>
             </div>
 
-            <div id="two" class="parkplatz_frei"><p class="inbox">
+            <div id="two" class="parkplatz_frei"  x-init="
+
+             if(two_value == true) {
+
+            two.setAttribute('style', 'background-color:red;');
+            } else {
+            two.setAttribute('style', 'background-color:green;');
+            }
+" ><p class="inbox">
                 2</p>
             </div>
 
@@ -56,7 +63,7 @@
                             Game
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Scroe
+                            Score
                         </th>
 
                     </tr>
@@ -250,6 +257,7 @@
             </div>
         </div>
     </section>
+
 
 
 {% endblock %}
