@@ -64,7 +64,7 @@
     <section>
 
         <div x-data="{ game: [] }"
-             x-init="game = await (await fetch('http://127.0.0.1:8000/api/game/')).json()">
+             x-init="game = await (await fetch('http://10.0.0.150:8000/api/game/')).json()">
 
             <div class="relative overflow-x-auto">
 
@@ -165,7 +165,7 @@
                 <h4> Wechselarbeitsplatz</h4>
 
         <div x-data="{ arbeitzplatz: [] }"
-             x-init="arbeitzplatz = await (await fetch('http://127.0.0.1:8000/api/game/')).json()">
+             x-init="arbeitzplatz = await (await fetch('http://10.0.0.150:8000/api/game/')).json()">
 
             <div class="relative overflow-x-auto">
 
@@ -281,7 +281,7 @@
 <section>
 
         <div x-data="{ user: [] }"
-             x-init="user = await (await fetch('http://127.0.0.1:8000/api/users/')).json()
+             x-init="user = await (await fetch('http://10.0.0.150:8000/api/users/')).json()
 
 
 ">
