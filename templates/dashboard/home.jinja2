@@ -64,7 +64,7 @@
     <section>
 
         <div x-data="{ game: [] }"
-             x-init="game = await (await fetch('http://10.0.0.150:8000/api/game/')).json()">
+             x-init="game = await (await fetch('http://10.0.0.58:8000/api/game/')).json()">
 
             <div class="relative overflow-x-auto">
 
@@ -281,7 +281,7 @@
 <section>
 
         <div x-data="{ user: [] }"
-             x-init="user = await (await fetch('http://10.0.0.150:8000/api/users/')).json()
+             x-init="user = await (await fetch('http://10.0.0.58:8000/api/users/')).json()
 
 
 ">
@@ -343,7 +343,7 @@ try{
 async function color_change_parkplatz_public() {
 
 
-    let url = 'http://127.0.0.1:8000/api/parkplatz';
+    let url = 'http://10.0.0.58:8000/api/parkplatz';
 
     let response = await fetch(url ,{
       headers: {'Cache-Control': 'no-store'
@@ -413,7 +413,7 @@ async function color_change_parkplatz_public() {
 async function get_user() {
 
 
-    let url2 = 'http://127.0.0.1:8000/api/users';
+    let url2 = 'http://10.0.0.58:8000/api/users';
 
     let response = await fetch(url2, {
         headers: {
