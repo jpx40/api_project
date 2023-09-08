@@ -1,12 +1,33 @@
+h3{
+    font-size: 70px;
+}
 
+.he {
+    font-size: 35px;
+    margin-left: 35%;
+
+}
+body {
+
+    background-color: aliceblue;
+}
+
+
+
+.main-block{
+    margin-top: 10%;
+    margin-bottom: 50px;
+    display: flex;
+    margin-left: 70px;
+}
     #container {
         display: grid;
-        grid: repeat(3, 100px) / auto-flow 80px;
+        grid: repeat(2, 90px) / auto-flow 60px;
         justify-content: center;
     }
 
     #container > .parkplatz_frei {
-        width: 50px;
+        width: 60px;
         height: 70px;
         border: 1px solid;
         max-width: 20em;
@@ -16,7 +37,7 @@
     }
 
     #container > .parkplatz_besetzt {
-        width: 50px;
+        width: 60px;
         height: 70px;
         border: 1px solid;
         max-width: 20em;
@@ -85,7 +106,7 @@ width: 100%;
 
 
 
-    p {
+    .foot {
         display: inline-block;
         margin-right: 40px;
     }
@@ -188,4 +209,22 @@ width: 100%;
         font-size: 80%;
         font-weight: bold;
         padding: 0 3px;
+    }
+
+
+    #getränke {
+        margin-left: 80px;
+        width: 90px;
+        height: 25px;
+        margin-bottom: 50px;
+        margin-top: 70px;
+        width: 160px;
+        margin-right: 80px;
+
+
+    }
+
+    #getränke .box {
+
+
     }

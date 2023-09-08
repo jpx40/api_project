@@ -1,11 +1,12 @@
 import fnmatch
 import os
+from typing import Annotated
 
 from fastapi import BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Header
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -48,43 +49,53 @@ async def read_template(request: Request):
     foo = "parkplatz_besetzt"
     return templates.TemplateResponse("dashboard/home.jinja2",  {"request": request ,"foo": foo})
 
-"""
+
 @app.get("/api/users")
 async def read_users():
     user = sql_tool.get_user(db)
     # sql_tool.db_close()
     # json_compatible_item_data = jsonable_encoder(user)
 
-    return {"user": user}
-
+    return  user
 """
-"""@app.get("/api/arbeitzplatz")
+@app.get("/api/arbeitzplatz")
 async def read_arbeitzplatz():
     arbeitzplatz = sql_tool.get_arbeitzplatz(db)
     return arbeitzplatz
-
 """
+
 @app.get("/api/parkplatz/")
 async def read_parkplatz():
     parkplatz = sql_tool.get_parkplatzpublic(db)
     return parkplatz
-"""
 
+"""
 @app.get("/api/game/")
 async def read_game_scores():
     game = sql_tool.get_game(db)
     return {"game": game}
-
 """
+
 
 def generate_html_response():
     html_content = """
-    <div> Hello </div>
+ <div id="container" x-data="two_value = false"  >
+            <div  id="one" class="parkplatz_frei"><p class="inbox">
+                1</p>
+            </div>
     """
     return HTMLResponse(content=html_content, status_code=200)
 
 
 
-@app.get("/html/", response_class=HTMLResponse)
+
+
+@app.get("/api/html")
 async def read_items():
-    return generate_html_response()
+    html_content = """
+
+            <div  id="one" class="parkplatz_frei"><p class="inbox">
+                1</p>
+            </div>
+    """
+    return HTMLResponse(content=html_content, status_code=200)

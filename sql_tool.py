@@ -81,6 +81,4 @@ def get_parkplatzpublic(db):
 
     return output
 
-db = create_connection(user="Jonas_P", password="Password", database="sys", host="10.0.0.200")
 
-print(get_parkplatzpublic(db))

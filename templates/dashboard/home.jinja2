@@ -1,21 +1,16 @@
 {% extends "layout.html" %}
 {% block main_content %}
-<div>{{ foo.foo }}</div>
+    <h3 class="he">Dashboard</h3>
+<section class="main-block">
     <section >
+        <h2> Public Parkplatz</h2>
         <div id="container" x-data="two_value = false"  >
             <div  id="one" class="parkplatz_frei"><p class="inbox">
                 1</p>
             </div>
 
-            <div id="two" class="parkplatz_frei"  x-init="
 
-             if(two_value == true) {
-
-            two.setAttribute('style', 'background-color:red;');
-            } else {
-            two.setAttribute('style', 'background-color:green;');
-            }
-" ><p class="inbox">
+            <div id="two" class="parkplatz_frei" ><p class="inbox">
                 2</p>
             </div>
 
@@ -35,20 +30,39 @@
                 6</p>
             </div>
 
-            <div id="seven" class="parkplatz_frei"><p class="inbox">
-                7</p>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="Private_Parkplatz">
+        <h2> Private Parkplatz</h2>
+        <div id="container"  >
+            <div  id="one_private" class="parkplatz_frei"><p class="inbox">
+                1</p>
             </div>
 
-            <div id="eight" class="parkplatz_frei"><p class="inbox">
-                8</p>
+
+            <div id="two_private" class="parkplatz_frei"><p class="inbox">
+                2</p>
             </div>
-            <div id="nine" class="parkplatz_frei"><p class="inbox">
-                9</p>
+
+            <div id="three_private" class="parkplatz_frei"><p class="inbox">
+                3</p>
+            </div>
+
+            <div id="four_private" class="parkplatz_frei"><p class="inbox">
+                4</p>
+            </div>
+
             </div>
         </div>
     </section>
 
     <section>
+
         <div x-data="{ game: [] }"
              x-init="game = await (await fetch('http://127.0.0.1:8000/api/game/')).json()">
 
@@ -71,10 +85,10 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4"
 
-                            x-text="game.game[0].user_name"></td>
+                            x-text=""></td>
                         <td class="px-6 py-4"
 
-                            x-text="game.game[0].user_name"></td>
+                            x-text=""></td>
 
 
                     </tr>
@@ -148,6 +162,8 @@
 
 
     <section>
+                <h4> Wechselarbeitsplatz</h4>
+
         <div x-data="{ arbeitzplatz: [] }"
              x-init="arbeitzplatz = await (await fetch('http://127.0.0.1:8000/api/game/')).json()">
 
@@ -258,6 +274,162 @@
         </div>
     </section>
 
+
+    <section>
+    <div id="getränke" class="bg-orange-200">
+        <h1 class="box">Getränke Automat</h1>
+<section>
+
+        <div x-data="{ user: [] }"
+             x-init="user = await (await fetch('http://127.0.0.1:8000/api/users/')).json()
+
+
+">
+
+            <div class="relative overflow-x-auto">
+
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
+
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Game
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Score
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text="user[0].Email"></td>
+                        <td class="px-6 py-4"
+
+                            x-text=""></td>
+
+
+                    </tr>
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="px-6 py-4"
+
+                            x-text=""></td>
+                        <td class="px-6 py-4"
+
+                            x-text=""></td>
+
+
+                    </tr>
+
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>    </div>
+    </section>
+
+<script>
+try{
+   // let parkplatz = await (await fetch('http://127.0.0.1:8000/api/game/')).json();
+
+}  catch (error) {
+  console.error(error);
+  // Expected output: ReferenceError: nonExistentFunction is not defined
+  // (Note: the exact output may be browser-dependent)
+}
+async function color_change_parkplatz_public() {
+
+
+    let url = 'http://127.0.0.1:8000/api/parkplatz';
+
+    let response = await fetch(url ,{
+      headers: {'Cache-Control': 'no-store'
+
+}})
+    //let response = htmx.ajax('GET', url, context: { headers:{"Content-Type": "application/json"});
+    let parkplatz =  await response.json();
+    if (parkplatz.one.besetzt == "true") {
+        htmx.removeClass(htmx.find("#one"), "parkplatz_frei", 1000);
+        htmx.addClass(htmx.find('#one'), 'parkplatz_besetzt', 1000);
+
+    }
+    else {
+        htmx.removeClass(htmx.find("#one"), "parkplatz_besetzt", 1000);
+        htmx.addClass(htmx.find('#one'), 'parkplatz_frei', 1000);
+    }
+      if (parkplatz.two.besetzt == "true") {
+        htmx.removeClass(htmx.find("#two"), "parkplatz_frei", 1000);
+        htmx.addClass(htmx.find('#two'), 'parkplatz_besetzt', 1000);
+    }
+    else {
+        htmx.removeClass(htmx.find("#two"), "parkplatz_besetzt", 1000);
+        htmx.addClass(htmx.find('#two'), 'parkplatz_frei', 1000);
+    }
+
+      if (parkplatz.three.besetzt == "true") {
+        htmx.removeClass(htmx.find("#three"), "parkplatz_frei", 1000);
+        htmx.addClass(htmx.find('#three'), 'parkplatz_besetzt', 1000);
+    }
+    else {
+        htmx.removeClass(htmx.find("#three"), "parkplatz_besetzt", 1000);
+        htmx.addClass(htmx.find('#three'), 'parkplatz_frei', 1000);
+    }
+
+      if (parkplatz.four.besetzt === "true") {
+        htmx.removeClass(htmx.find("#four"), "parkplatz_frei", 1000);
+        htmx.addClass(htmx.find('#four'), 'parkplatz_besetzt', 1000);
+    }
+    else {
+        htmx.removeClass(htmx.find("#four"), "parkplatz_besetzt", 1000);
+        htmx.addClass(htmx.find('#four'), 'parkplatz_frei', 1000);
+    }
+
+      if (parkplatz.five.besetzt == "true") {
+        htmx.removeClass(htmx.find("#five"), "parkplatz_frei", 1000);
+        htmx.addClass(htmx.find('#five'), 'parkplatz_besetzt', 1000);
+    }
+    else {
+        htmx.removeClass(htmx.find("#five"), "parkplatz_besetzt", 1000);
+        htmx.addClass(htmx.find('#five'), 'parkplatz_frei', 1000);
+    }
+    if (parkplatz.six.besetzt == "true") {
+        htmx.removeClass(htmx.find("#six"), "parkplatz_frei", 1000);
+        htmx.addClass(htmx.find('#six'), 'parkplatz_besetzt', 1000);
+    }
+    else {
+        htmx.removeClass(htmx.find("#six"), "parkplatz_besetzt", 1000);
+        htmx.addClass(htmx.find('#six'), 'parkplatz_frei', 1000);
+    }
+
+
+
+
+    //setTimeout(color_change_parkplatz_public, 1000)
+
+}
+async function get_user() {
+
+
+    let url2 = 'http://127.0.0.1:8000/api/users';
+
+    let response = await fetch(url2, {
+        headers: {
+            'Cache-Control': 'no-store'
+
+        }
+    })
+    //let response = htmx.ajax('GET', url, context: { headers:{"Content-Type": "application/json"});
+    let user = await response.json();
+    alert(user[0].Email)
+return user
+}
+get_user()
+Alpine.data({user: get_user()})
+color_change_parkplatz_public()
+</script>
 
 
 {% endblock %}
