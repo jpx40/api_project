@@ -2,8 +2,10 @@
 {% block main_content %}
     <h3 class="he">Dashboard</h3>
 <section class="main-block">
-    <section >
-        <h2> Public Parkplatz</h2>
+
+    <section>
+        <section class="park_public">
+            <h2> Public</h2>
         <div id="container" x-data="two_value = false"  >
             <div  id="one" class="parkplatz_frei"><p class="inbox">
                 1</p>
@@ -36,9 +38,8 @@
     </section>
 
 
-
-    <section id="Private_Parkplatz">
-        <h2> Private Parkplatz</h2>
+        <section id="Private_Parkplatz" class="park_privat">
+            <h2> Privat</h2>
         <div id="container"  >
             <div  id="one_private" class="parkplatz_frei"><p class="inbox">
                 1</p>
@@ -61,8 +62,10 @@
         </div>
     </section>
 
-    <section>
 
+    </section>
+    <section class="game">
+        <h5 class="hgame"> Spiel</h5>
         <div x-data="{ game: [] }"
              x-init="game = await (await fetch('http://10.0.0.58:8000/api/game/')).json()">
 
@@ -165,7 +168,7 @@
                 <h4> Wechselarbeitsplatz</h4>
 
         <div x-data="{ arbeitzplatz: [] }"
-             x-init="arbeitzplatz = await (await fetch('http://10.0.0.150:8000/api/game/')).json()">
+             x-init="arbeitzplatz = await (await fetch('/api/game/')).json()">
 
             <div class="relative overflow-x-auto">
 
@@ -275,62 +278,6 @@
     </section>
 
 
-    <section>
-    <div id="getränke" class="bg-orange-200">
-        <h1 class="box">Getränke Automat</h1>
-<section>
-
-        <div x-data="{ user: [] }"
-             x-init="user = await (await fetch('http://10.0.0.58:8000/api/users/')).json()
-
-
-">
-
-            <div class="relative overflow-x-auto">
-
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-
-
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Game
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Score
-                        </th>
-
-                    </tr>
-                    </thead>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-6 py-4"
-
-                            x-text="user[0].Email"></td>
-                        <td class="px-6 py-4"
-
-                            x-text=""></td>
-
-
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-6 py-4"
-
-                            x-text=""></td>
-                        <td class="px-6 py-4"
-
-                            x-text=""></td>
-
-
-                    </tr>
-
-
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </section>    </div>
-    </section>
-
 <script>
 try{
    // let parkplatz = await (await fetch('http://127.0.0.1:8000/api/game/')).json();
@@ -413,7 +360,7 @@ async function color_change_parkplatz_public() {
 async function get_user() {
 
 
-    let url2 = 'http://10.0.0.58:8000/api/users';
+    let url2 = '/api/users';
 
     let response = await fetch(url2, {
         headers: {
