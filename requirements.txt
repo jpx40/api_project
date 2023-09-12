@@ -1,0 +1,75 @@
+
+install_requires=[
+"aiosqlite",
+"annotated-types",
+"anyio",
+"attrs",
+"Brotli",
+"certifi",
+"cffi",
+"click",
+"cryptography",
+"Cython",
+"dnspython",
+"exceptiongroup",
+"fastapi",
+"hpack",
+"hyperframe",
+"fastapi",
+"idna",
+"PyYAML",
+"Jinja2",
+"starlette"
+
+]
+
+aiosqlite @ file:///home/conda/feedstock_root/build_artifacts/aiosqlite_1682491975081/work
+annotated-types @ file:///home/conda/feedstock_root/build_artifacts/annotated-types_1685597160053/work
+anyio @ file:///home/conda/feedstock_root/build_artifacts/anyio_1693488585952/work
+attrs @ file:///home/conda/feedstock_root/build_artifacts/attrs_1683424013410/work
+Brotli @ file:///Users/runner/miniforge3/conda-bld/brotli-split_1693583518054/work
+certifi==2023.7.22
+cffi @ file:///Users/runner/miniforge3/conda-bld/cffi_1671179421243/work
+click @ file:///home/conda/feedstock_root/build_artifacts/click_1692311806742/work
+cryptography @ file:///Users/runner/miniforge3/conda-bld/cryptography-split_1691444266441/work
+Cython @ file:///Users/runner/miniforge3/conda-bld/cython_1693137217962/work
+dnspython @ file:///home/conda/feedstock_root/build_artifacts/dnspython_1691598144738/work
+exceptiongroup @ file:///home/conda/feedstock_root/build_artifacts/exceptiongroup_1692026125334/work
+fastapi @ file:///home/conda/feedstock_root/build_artifacts/fastapi_1693161273574/work
+h11 @ file:///home/conda/feedstock_root/build_artifacts/h11_1664132893548/work
+h2 @ file:///home/conda/feedstock_root/build_artifacts/h2_1634280454336/work
+hpack==4.0.0
+httpcore @ file:///home/conda/feedstock_root/build_artifacts/httpcore_1694194101801/work
+hyperframe @ file:///home/conda/feedstock_root/build_artifacts/hyperframe_1619110129307/work
+idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1663625384323/work
+inflect==7.0.0
+Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1654302431367/work
+MarkupSafe @ file:///Users/runner/miniforge3/conda-bld/markupsafe_1685769116730/work
+mysql-connector-python @ file:///Users/runner/miniforge3/conda-bld/mysql-connector-python_1686438815648/work
+numpy @ file:///Users/runner/miniforge3/conda-bld/numpy_1691056507258/work
+orjson @ file:///Users/runner/miniforge3/conda-bld/orjson_1692240411044/work/target/wheels/orjson-3.9.5-cp311-cp311-macosx_11_0_arm64.whl#sha256=e659a1b3aca6157471f70e75d7a0774aa091092c5cbb171f535a148096834a37
+outcome @ file:///home/conda/feedstock_root/build_artifacts/outcome_1655217710638/work
+pandas @ file:///Users/runner/miniforge3/conda-bld/pandas_1693415278066/work
+protobuf==3.20.3
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1636257122734/work
+pydantic @ file:///home/conda/feedstock_root/build_artifacts/pydantic_1692827871595/work
+pydantic_core @ file:///Users/runner/miniforge3/conda-bld/pydantic-core_1692821370484/work
+PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1661604839144/work
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
+pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1693930252784/work
+PyYAML @ file:///Users/runner/miniforge3/conda-bld/pyyaml_1692737420010/work
+selenium @ file:///home/conda/feedstock_root/build_artifacts/selenium_1693852195902/work
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
+sniffio @ file:///home/conda/feedstock_root/build_artifacts/sniffio_1662051266223/work
+sortedcontainers @ file:///home/conda/feedstock_root/build_artifacts/sortedcontainers_1621217038088/work
+sqlacodegen==2.3.0.post1
+SQLAlchemy==1.4.49
+starlette @ file:///home/conda/feedstock_root/build_artifacts/starlette-recipe_1684245096404/work
+trio @ file:///Users/runner/miniforge3/conda-bld/trio_1689211665476/work
+trio-websocket @ file:///home/conda/feedstock_root/build_artifacts/trio-websocket_1694095877403/work/dist
+typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1688315532570/work
+tzdata @ file:///home/conda/feedstock_root/build_artifacts/python-tzdata_1680081134351/work
+ujson @ file:///Users/runner/miniforge3/conda-bld/ujson_1675192187119/work
+urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1689789803562/work
+uvicorn @ file:///Users/runner/miniforge3/conda-bld/uvicorn-split_1690810228747/work
+wsproto @ file:///home/conda/feedstock_root/build_artifacts/wsproto_1661356345548/work

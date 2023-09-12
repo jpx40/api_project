@@ -13,7 +13,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 import sql_tool
-import yt
 from sql_tool import create_connection
 
 with open('config.yaml', 'r') as file:
