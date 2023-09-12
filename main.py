@@ -2,6 +2,7 @@ import fnmatch
 import os
 from typing import Annotated
 
+import yaml
 from fastapi import BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -15,7 +16,11 @@ import sql_tool
 import yt
 from sql_tool import create_connection
 
-db = create_connection(user="Jonas_P", password="Password", database="sys", host="10.0.0.200")
+with open('config.yaml', 'r') as file:
+    config = yaml.safe_load(file)
+
+db = create_connection(user=config["user"], password=config["password"], database=config["database"],
+                       host=config["host"])
 
 
 
