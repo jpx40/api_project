@@ -1,6 +1,3 @@
-
-
-
 aiosqlite
 annotated-types
 anyio
