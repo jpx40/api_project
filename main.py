@@ -15,7 +15,7 @@ from fastapi.templating import Jinja2Templates
 import sql_tool
 from sql_tool import create_connection
 
-with open('config.yaml', 'r') as file:
+with open('~/.config/dashboard/config.yaml', 'r') as file:
     config = yaml.safe_load(file)
 
 db = create_connection(user=config["user"], password=config["password"], database=config["database"],
