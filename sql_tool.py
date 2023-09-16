@@ -1,6 +1,9 @@
 # import sqlite3
 # from sqlite3 import Error
+import os
+
 import mysql.connector as mysql
+import yaml
 from mysql.connector import Error
 
 
@@ -46,7 +49,7 @@ def get_game(db):
 
 def get_arbeitzplatz(db):
     c = db.cursor(dictionary=True)
-    c.execute("SELECT  * FROM wechselarbeitzplatz")
+    c.execute("SELECT  * FROM wechselabp")
 
     result = c.fetchall()
     return result
@@ -56,29 +59,42 @@ def get_arbeitzplatz(db):
 def get_parkplatzpublic(db):
     output = {}
     c = db.cursor(dictionary=True)
-    c.execute("SELECT  * FROM parkplatzpublic")
+    c.execute("SELECT  * FROM parkplatz")
 
     result = c.fetchall()
 
     for row in result:
-        if row["parkplatz_id"] == 1:
+        if row["ParkplatzNr"] == 1:
             output["one"] = row
 
-        elif row["parkplatz_id"] == 2:
+        elif row["ParkplatzNr"] == 2:
             output["two"] = row
 
-        elif row["parkplatz_id"] == 3:
+        elif row["ParkplatzNr"] == 3:
             output["three"] = row
 
-        elif row["parkplatz_id"] == 4:
+        elif row["ParkplatzNr"] == 4:
             output["four"] = row
 
 
-        elif row["parkplatz_id"] == 5:
+        elif row["ParkplatzNr"] == 5:
          output["five"] = row
-        elif row["parkplatz_id"] == 6:
+        elif row["ParkplatzNr"] == 6:
          output["six"] = row
 
     return output
 
 
+home = os.environ['HOME']
+try:
+    with open(home + '/.config/dashboard/config.yaml', 'r') as file:
+        config = yaml.safe_load(file)
+
+except:
+    with open('./config.yaml', 'r') as file:
+        config = yaml.safe_load(file)
+
+# db = create_connection(user=config["user"], password=config["password"], database=config["database"], host=config["host"])
+
+
+#print(get_user(db))

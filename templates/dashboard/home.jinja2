@@ -38,36 +38,12 @@
     </section>
 
 
-        <section id="Private_Parkplatz" class="park_privat">
-            <h2> Privat</h2>
-        <div id="container"  >
-            <div  id="one_private" class="parkplatz_frei"><p class="inbox">
-                1</p>
-            </div>
-
-
-            <div id="two_private" class="parkplatz_frei"><p class="inbox">
-                2</p>
-            </div>
-
-            <div id="three_private" class="parkplatz_frei"><p class="inbox">
-                3</p>
-            </div>
-
-            <div id="four_private" class="parkplatz_frei"><p class="inbox">
-                4</p>
-            </div>
-
-            </div>
-        </div>
-    </section>
-
 
     </section>
     <section class="game">
         <h5 class="hgame"> Spiel</h5>
         <div x-data="{ game: [] }"
-             x-init="game = await (await fetch('http://10.0.0.58:8000/api/game/')).json()">
+             x-init="game = await (await fetch('http://10.0.0.58:8000/api/user/')).json()">
 
             <div class="relative overflow-x-auto">
 
@@ -98,60 +74,60 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4"
 
-                            x-text="game.game[1].user_name"></td>
+                            x-text="game.user[1].Benutzername"></td>
                         <td class="px-6 py-4"
 
-                            x-text="game.game[1].user_name"></td>
+                            x-text="game.user[1].Benutzername"></td>
 
 
                     </tr>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4"
 
-                            x-text="game.game[2].user_name"></td>
+                            x-text="game.user[2].Punkte"></td>
                         <td class="px-6 py-4"
 
-                            x-text="game.game[2].user_name"></td>
+                            x-text="game.user[2].Punkte"></td>
 
 
                     </tr>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4"
 
-                            x-text="game.game[3].user_name"></td>
+                            x-text="game.user[3].Benutzername"></td>
                         <td class="px-6 py-4"
 
-                            x-text="game.game[3].user_name"></td>
+                            x-text="game.user[3].Punkte"></td>
 
 
                     </tr>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4"
 
-                            x-text="game.game[4].user_name"></td>
+                            x-text="game.user[4].Benutzername"></td>
                         <td class="px-6 py-4"
 
-                            x-text="game.game[4].user_name"></td>
+                            x-text="game.user[4].Punkte"></td>
 
 
                     </tr>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4"
 
-                            x-text="game.game[5].user_name"></td>
+                            x-text="game.user[5].Benutzername"></td>
                         <td class="px-6 py-4"
 
-                            x-text="game.game[5].user_name"></td>
+                            x-text="game.user[5].Punkte"></td>
 
 
                     </tr>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4"
 
-                            x-text="game.game[6].user_name"></td>
+                            x-text="game.user[6].Benutzername"></td>
                         <td class="px-6 py-4"
 
-                            x-text="game.game[6].user_name"></td>
+                            x-text="game.user[6].Punkte"></td>
 
 
                     </tr>
@@ -168,7 +144,7 @@
                 <h4> Wechselarbeitsplatz</h4>
 
         <div x-data="{ arbeitzplatz: [] }"
-             x-init="arbeitzplatz = await (await fetch('/api/game/')).json()">
+             x-init="arbeitzplatz = await (await fetch('/api/arbeitzplatz/')).json()">
 
             <div class="relative overflow-x-auto">
 
@@ -290,15 +266,40 @@ try{
 async function color_change_parkplatz_public() {
 
 
-    let url = 'http://10.0.0.58:8000/api/parkplatz';
+    let url_parkplatz = 'http://10.0.0.58:8000/api/parkplatz';
 
-    let response = await fetch(url ,{
-      headers: {'Cache-Control': 'no-store'
 
-}})
+    const request = new Request(url_parkplatz, {
+        method: "GET"
+    });
+
+    const url = request.url;
+    const method = request.method;
+    const credentials = request.credentials;
+
+    function fetch_parkplatz() {
+        fetch(request)
+            .then((response) => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    throw new Error("Something went wrong on API server!");
+                }
+            })
+            .then((response) => {
+                console.debug(response);
+                // …
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+    //let response = await fetch(url)
     //let response = htmx.ajax('GET', url, context: { headers:{"Content-Type": "application/json"});
-    let parkplatz =  await response.json();
-    if (parkplatz.one.besetzt == "true") {
+    let parkplatz = fetch_parkplatz(request);
+    if (parkplatz.one.Status == ""Besetzt
+    ") {
         htmx.removeClass(htmx.find("#one"), "parkplatz_frei", 1000);
         htmx.addClass(htmx.find('#one'), 'parkplatz_besetzt', 1000);
 
@@ -307,7 +308,7 @@ async function color_change_parkplatz_public() {
         htmx.removeClass(htmx.find("#one"), "parkplatz_besetzt", 1000);
         htmx.addClass(htmx.find('#one'), 'parkplatz_frei', 1000);
     }
-      if (parkplatz.two.besetzt == "true") {
+if (parkplatz.two.Status == "Besetzt") {
         htmx.removeClass(htmx.find("#two"), "parkplatz_frei", 1000);
         htmx.addClass(htmx.find('#two'), 'parkplatz_besetzt', 1000);
     }
@@ -316,7 +317,7 @@ async function color_change_parkplatz_public() {
         htmx.addClass(htmx.find('#two'), 'parkplatz_frei', 1000);
     }
 
-      if (parkplatz.three.besetzt == "true") {
+if (parkplatz.three.Status == "Besetzt") {
         htmx.removeClass(htmx.find("#three"), "parkplatz_frei", 1000);
         htmx.addClass(htmx.find('#three'), 'parkplatz_besetzt', 1000);
     }
@@ -325,7 +326,7 @@ async function color_change_parkplatz_public() {
         htmx.addClass(htmx.find('#three'), 'parkplatz_frei', 1000);
     }
 
-      if (parkplatz.four.besetzt === "true") {
+if (parkplatz.four.Status === "Besetzt") {
         htmx.removeClass(htmx.find("#four"), "parkplatz_frei", 1000);
         htmx.addClass(htmx.find('#four'), 'parkplatz_besetzt', 1000);
     }
@@ -334,7 +335,7 @@ async function color_change_parkplatz_public() {
         htmx.addClass(htmx.find('#four'), 'parkplatz_frei', 1000);
     }
 
-      if (parkplatz.five.besetzt == "true") {
+if (parkplatz.five.Status == "Besetzt") {
         htmx.removeClass(htmx.find("#five"), "parkplatz_frei", 1000);
         htmx.addClass(htmx.find('#five'), 'parkplatz_besetzt', 1000);
     }
@@ -342,7 +343,7 @@ async function color_change_parkplatz_public() {
         htmx.removeClass(htmx.find("#five"), "parkplatz_besetzt", 1000);
         htmx.addClass(htmx.find('#five'), 'parkplatz_frei', 1000);
     }
-    if (parkplatz.six.besetzt == "true") {
+if (parkplatz.six.Status == "Besetzt") {
         htmx.removeClass(htmx.find("#six"), "parkplatz_frei", 1000);
         htmx.addClass(htmx.find('#six'), 'parkplatz_besetzt', 1000);
     }
@@ -352,7 +353,7 @@ async function color_change_parkplatz_public() {
     }
 
 
-
+delete (url)
 
     //setTimeout(color_change_parkplatz_public, 1000)
 

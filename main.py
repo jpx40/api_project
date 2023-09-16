@@ -17,8 +17,13 @@ from sql_tool import create_connection
 import os
 
 home = os.environ['HOME']
-with open(home + '/.config/dashboard/config.yaml', 'r') as file:
-    config = yaml.safe_load(file)
+try:
+    with open(home + '/.config/dashboard/config.yaml', 'r') as file:
+        config = yaml.safe_load(file)
+
+except:
+    with open('./config.yaml', 'r') as file:
+        config = yaml.safe_load(file)
 
 db = create_connection(user=config["user"], password=config["password"], database=config["database"],
                        host=config["host"])
@@ -31,9 +36,7 @@ templates = Jinja2Templates(directory="templates")
 
 origins = [
 
-    "http://localhost:63342",
-    "http://localhost:8080",
-    "http://127.0.0.1:*"
+
 ]
 
 app.add_middleware(
@@ -52,8 +55,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_template(request: Request):
-    foo = "parkplatz_besetzt"
-    return templates.TemplateResponse("dashboard/home.jinja2",  {"request": request ,"foo": foo})
+    return templates.TemplateResponse("dashboard/home.jinja2", {"request": request})
 
 
 @app.get("/api/users")
@@ -62,25 +64,19 @@ async def read_users():
     # sql_tool.db_close()
     # json_compatible_item_data = jsonable_encoder(user)
 
-    return  user
-"""
+    return {"user": user}
+
 @app.get("/api/arbeitzplatz")
 async def read_arbeitzplatz():
     arbeitzplatz = sql_tool.get_arbeitzplatz(db)
     return arbeitzplatz
-"""
+
 
 @app.get("/api/parkplatz/")
 async def read_parkplatz():
     parkplatz = sql_tool.get_parkplatzpublic(db)
     return parkplatz
 
-"""
-@app.get("/api/game/")
-async def read_game_scores():
-    game = sql_tool.get_game(db)
-    return {"game": game}
-"""
 
 
 def generate_html_response():
