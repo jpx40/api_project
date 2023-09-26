@@ -36,8 +36,7 @@ templates = Jinja2Templates(directory="templates")
 
 origins = [
 
-    "http://localhost:*",
-
+"*"
 ]
 
 app.add_middleware(
