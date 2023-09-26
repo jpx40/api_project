@@ -36,6 +36,7 @@ templates = Jinja2Templates(directory="templates")
 
 origins = [
 
+    "http://localhost:*",
 
 ]
 
@@ -50,7 +51,7 @@ app.add_middleware(
 
 
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+#app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -58,13 +59,13 @@ async def read_template(request: Request):
     return templates.TemplateResponse("dashboard/home.jinja2", {"request": request})
 
 
-@app.get("/api/users")
+@app.get("/api/user")
 async def read_users():
     user = sql_tool.get_user(db)
     # sql_tool.db_close()
     # json_compatible_item_data = jsonable_encoder(user)
 
-    return {"user": user}
+    return user
 
 @app.get("/api/arbeitzplatz")
 async def read_arbeitzplatz():

@@ -55,7 +55,6 @@ def get_arbeitzplatz(db):
     return result
 
 
-
 def get_parkplatzpublic(db):
     output = {}
     c = db.cursor(dictionary=True)
@@ -82,7 +81,7 @@ def get_parkplatzpublic(db):
         elif row["ParkplatzNr"] == 6:
          output["six"] = row
 
-    return output
+    return result
 
 
 home = os.environ['HOME']

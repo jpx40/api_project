@@ -3,7 +3,7 @@
 mkdir ~/.config
 mkdir ~/.config/dashboard
 cp ./config.yaml ~/.config/dashboard/config.yaml
-python3 -m ensurepip venv env
+python3 -m  venv env
 
 source ./env/bin/activate
 
